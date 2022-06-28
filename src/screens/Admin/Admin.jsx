@@ -1,7 +1,21 @@
 import React from "react";
 
 import {
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+  Input,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Flex,
     Stack,
+    Spacer,
     VStack,
     Box,
     Table,
@@ -15,18 +29,48 @@ import {
     TableContainer,
     Text,
     Button,
-    ButtonGroup
+    ButtonGroup,
+    useDisclosure
   } from '@chakra-ui/react'
 
   const Admin = () => {
+    const { isOpen, onOpen, onClose } = useDisclosure()
     return(
-        <VStack p={20} bg="blue.50" height="100vh">
-            <Stack spacing={4} mb={12} direction='row' align='center'>
-            <Button colorScheme='teal'>Add user</Button>
-            <Button colorScheme='teal' variant='outline'>Add multiple users</Button>
-            </Stack>
+        <Box p={32}  bg="blue.50" height="100vh">
+            <Flex spacing={4} mb={12} direction='row' alignContent="flex-end" justifyContent='center'>
+              <Box width='3xl'><Text color="teal" fontSize='xl'>Hello <Text fontWeight='bold' fontSize='3xl'>Admin</Text></Text></Box>
+              <Spacer></Spacer>
+            <Box>
+            <Button colorScheme='teal' variant='ghost' onClick={onOpen}>Add user</Button>
+            <Button colorScheme='teal' onClick={onOpen} >Add multiple users</Button>
+            </Box>
+            
+            
+            </Flex>
            
-        <Box boxShadow="lg" bg="white" borderRadius="xl">
+            <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Add new user</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+          <FormControl>
+  <FormLabel htmlFor='email'>Email address</FormLabel>
+  <Input id='email' type='email' />
+ 
+</FormControl>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme='teal' mr={3} onClick={onClose}>
+              Submit
+            </Button>
+           
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    
+        <Box maxW='6xl' boxShadow="lg" bg="white" borderRadius="xl">
            
         <TableContainer p={10}>
         <Table variant='simple' colorScheme='gray'>
@@ -69,7 +113,7 @@ import {
         </Table>
       </TableContainer>
       </Box>
-      </VStack>
+      </Box>
     )
 }
 
