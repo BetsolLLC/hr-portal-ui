@@ -1,5 +1,6 @@
 import React from "react";
 
+
 import {
   FormControl,
   FormLabel,
@@ -37,7 +38,7 @@ import {
     const { isOpen, onOpen, onClose } = useDisclosure()
     return(
         <Box p={32}  bg="blue.50" height="100vh">
-            <Flex spacing={4} mb={12} direction='row' alignContent="flex-end" justifyContent='center'>
+            <Flex spacing={4} mb={12} direction='row' alignItems='center'>
               <Box width='3xl'><Text color="teal" fontSize='xl'>Hello <Text fontWeight='bold' fontSize='3xl'>Admin</Text></Text></Box>
               <Spacer></Spacer>
             <Box>
