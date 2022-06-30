@@ -13,8 +13,8 @@ import {
 
 export default function SetPass() {
   return (
-    <Flex bg="gray.100" align="center" justify="center" h="100vh">
-      <Box bg="white" p={6} rounded="md" w={64}>
+    <Flex bgColor="blue.50" align="center" justify="center" h="100vh">
+      <Box bg="white" p={6} rounded="md" w={64} boxShadow="lg">
         <Formik
           initialValues={{
             oldpassword: "",
@@ -26,12 +26,10 @@ export default function SetPass() {
         >
           {({ handleSubmit, errors, touched }) => (
             <form onSubmit={handleSubmit}>
-              <VStack spacing={6} align="flex-start">
+              <VStack spacing={8} align="flex-start">
                 <Text align={"center"} fontWeight="semibold" fontSize="2xl">
                   Reset Password
                 </Text>
-              </VStack>
-              <VStack spacing={4} align="flex-start">
                 <FormControl isInvalid={!!errors.password && touched.password}>
                   <FormLabel htmlFor="password">Old Password</FormLabel>
                   <Field

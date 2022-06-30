@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
+import AuthContext from "./screens/Login/AuthProvider.js";
 import Login from "./screens/Login/Login.jsx";
+import PreOnboarding from "./screens/PreOnboarding/PreOnboarding.jsx";
 import SetPass from "./screens/Set_Password/set_password.jsx";
 function App() {
+  const { user } = useContext(AuthContext);
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/password" element={<SetPass />} />
-      </Routes>
+      {user?.id ? (
+        <Routes>
+          <Route exact path="/preonboarding" element={<PreOnboarding />} />
+          <Route path="*" element={<Navigate to="/preonboarding" />} />
+        </Routes>
+      ) : (
+        <Routes>
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/password" element={<SetPass />} />
+          <Route path="*" element={<Navigate to="/login" />} />
+        </Routes>
+      )}
     </BrowserRouter>
   );
 }
