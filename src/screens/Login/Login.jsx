@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { useFormik } from "formik";
 
 //import { AuthProvider } from "./AuthProvider";
-import AuthContext from "./AuthProvider";
+import AuthContext from "../../context/AuthProvider";
 
 import {
   Box,
@@ -37,8 +37,6 @@ export default function Login() {
         setUserInfo(data);
         localStorage.setItem("userInfo", JSON.stringify(data));
       } else {
-        //to do snackbar in chakra
-        //message will be from backend (error )
         toast({
           title: "Error",
           description: error,
@@ -47,7 +45,6 @@ export default function Login() {
       }
       setLoading(false);
     } catch (error) {
-      //to do snackbar in chakra
       toast({
         title: "Error",
         description: error.response.data.error

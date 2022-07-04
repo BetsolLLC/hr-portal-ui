@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
-import AuthContext from "./screens/Login/AuthProvider.js";
+import AuthContext from "./context/AuthProvider.js";
 import Login from "./screens/Login/Login.jsx";
 import PreOnboarding from "./screens/PreOnboarding/PreOnboarding.jsx";
 
