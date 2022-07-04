@@ -27,7 +27,6 @@ const PreOnboarding = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  
 
   const handleChange = (event) => {
     const selectedFile = event.target.files[0];
