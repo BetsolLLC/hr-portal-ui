@@ -4,7 +4,9 @@ import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 import AuthContext from "./screens/Login/AuthProvider.js";
 import Login from "./screens/Login/Login.jsx";
 import PreOnboarding from "./screens/PreOnboarding/PreOnboarding.jsx";
-import SetPass from "./screens/Set_Password/set_password.jsx";
+
+import SetPass from "./screens/setpassword/SetPass.jsx";
+
 function App() {
   const { user } = useContext(AuthContext);
   return (

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   Box,
   Button,
@@ -9,29 +9,97 @@ import {
   Input,
   VStack,
   Text,
+  Spinner,
+  useToast,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
 } from "@chakra-ui/react";
+
 import AuthContext from "../Login/AuthProvider";
+import axios from "../../api/axios";
+import useFetch from "./useFetch";
 
 const PreOnboarding = () => {
   const { user } = useContext(AuthContext);
+  const { data, loading, error, refetch } = useFetch();
+  const toast = useToast();
+  const [file, setFile] = useState("");
+
+  if (loading)
+    return (
+      <Spinner
+        thickness="4px"
+        speed="0.65s"
+        emptyColor="gray.200"
+        color="blue.500"
+        size="xl"
+      />
+    );
+
+  if (error)
+    return <Alert status='error'>
+    <AlertIcon />
+    <AlertTitle>Your browser is outdated!</AlertTitle>
+    <AlertDescription>Your Chakra experience may be degraded.</AlertDescription>
+  </Alert>
+  const handleChange = (event) => {
+    const selectedFile = event.target.files[0];
+    setFile(selectedFile);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    // name of file to be uploaded on server 'file'
+    formData.append("file", file);
+    axios
+      .post("./api", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <Flex bg="blue.50" align="center" justify="center" h="100vh" w="100%">
       <VStack spacing={8} align="center" w="80%">
-        <Box bg="white" p={6} rounded="md" w="80%" boxShadow="lg">
-          <Text fontSize="3xl" fontWeight="bold">
-            Pre-Onboarding Details
-          </Text>
-          <Text align={"justify"} fontSize="l">
-            Enter details all the details.
-          </Text>
-        </Box>
-        <Box bg="white" p={6} rounded="md" w="80%" boxShadow="lg">
-          <FormControl>
-            <FormLabel htmlFor="email">Email address</FormLabel>
-            <Input id="email" type="email" />
-            <FormHelperText>We'll never share your email.</FormHelperText>
-          </FormControl>
-        </Box>
+        <form onSubmit={handleSubmit}>
+          <Box bg="white" m={6} p={6} rounded="md" w="80%" boxShadow="lg">
+            <Text fontSize="3xl" fontWeight="bold">
+              Pre-Onboarding Details
+            </Text>
+            <Text align={"justify"} fontSize="l">
+              Enter details all the details.
+            </Text>
+          </Box>
+          <Box bg="white" m={6} p={6} rounded="md" w="80%" boxShadow="lg">
+            <FormControl>
+              <FormLabel htmlFor="email">Email address</FormLabel>
+              <Input id="email" type="email" />
+              <FormHelperText>We'll never share your email.</FormHelperText>
+            </FormControl>
+          </Box>
+          <Box bg="white" m={6} p={6} rounded="md" w="80%" boxShadow="lg">
+            <FormControl>
+              <FormLabel htmlFor="email">Aadhar Card</FormLabel>
+              <input
+                type="file"
+                name="file"
+                onChange={(e) => handleChange(e)}
+                id="upload-button"
+                accept=".pdf"
+              />
+            </FormControl>
+          </Box>
+          <Box m={6} p={6} w="80%">
+            <Button type="submit" colorScheme="blue">
+              Submit
+            </Button>
+          </Box>
+        </form>
       </VStack>
     </Flex>
   );

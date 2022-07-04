@@ -21,7 +21,7 @@ import axios from "../../api/axios";
 export default function Login() {
   const { setUserInfo } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
-
+  const toast = useToast();
   const login = async (email, password) => {
     setLoading(true);
     try {
@@ -39,12 +39,23 @@ export default function Login() {
       } else {
         //to do snackbar in chakra
         //message will be from backend (error )
+        toast({
+          title: "Error",
+          description: error,
+          status: "error",
+        });
       }
       setLoading(false);
     } catch (error) {
       //to do snackbar in chakra
+      toast({
+        title: "Error",
+        description: error.response.data.error
+          ? error.response.data.error
+          : "Something went wrong.Please try again.",
+        status: "error",
+      });
       setLoading(false);
-      <ToastExample />;
     }
   };
   const formik = useFormik({
