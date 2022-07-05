@@ -42,8 +42,8 @@ import {
               <Box width='3xl'><Text color="teal" fontSize='xl'>Hello <Text fontWeight='bold' fontSize='3xl'>Admin</Text></Text></Box>
               <Spacer></Spacer>
             <Box>
-            <Button colorScheme='teal' variant='ghost' onClick={onOpen}>Add user</Button>
-            <Button colorScheme='teal' onClick={onOpen} >Add multiple users</Button>
+            <Button colorScheme='blue' variant='ghost' onClick={onOpen}>Add user</Button>
+            <Button colorScheme='blue' onClick={onOpen} >Add multiple users</Button>
             </Box>
             
             
