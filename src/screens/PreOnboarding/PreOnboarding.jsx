@@ -83,7 +83,7 @@ const PreOnboarding = () => {
   }, []);
 
   return (
-    <Flex bg="blue.50" align="center" justify="center" h="100vh" w="100%">
+    <Flex bg="blue.50" align="center" justify="center" padding="32" w="100%">
       <VStack spacing={8} align="center" w="80%">
         <form onSubmit={handleSubmit}>
           <Box bg="white" m={6} p={6} rounded="md" w="80%" boxShadow="lg">
