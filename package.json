@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "@chakra-ui/core": "^0.8.0",
+    "@chakra-ui/icons": "^2.0.2",
     "@chakra-ui/layout": "^2.0.2",
     "@chakra-ui/react": "^2.2.1",
     "@emotion/core": "^11.0.0",
@@ -17,6 +18,7 @@
     "emotion-theming": "^11.0.0",
     "formik": "^2.2.9",
     "framer-motion": "^6.2.9",
+    "js-file-download": "^0.4.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^3.0.0",

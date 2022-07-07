@@ -11,6 +11,7 @@ function App() {
   const { user } = useContext(AuthContext);
   return (
     <BrowserRouter>
+    
       {user?.id ? (
         <Routes>
           <Route exact path="/preonboarding" element={<PreOnboarding />} />
