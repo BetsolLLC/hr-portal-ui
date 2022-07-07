@@ -47,7 +47,7 @@ export default function Login() {
     } catch (error) {
       toast({
         title: "Error",
-        description: error.response.data.error
+        description: error?.response?.data?.error
           ? error.response.data.error
           : "Something went wrong.Please try again.",
         status: "error",
