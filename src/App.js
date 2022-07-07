@@ -3,35 +3,40 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 
-import Onboarding from "./screens/Onboarding/Onboarding";
 import Admin from "./screens/Admin/Admin";
-
-
 
 import AuthContext from "./context/AuthProvider.js";
 import Login from "./screens/Login/Login.jsx";
 import PreOnboarding from "./screens/PreOnboarding/PreOnboarding.jsx";
 
 import SetPass from "./screens/setpassword/SetPass.jsx";
+import { Spinner } from "@chakra-ui/react";
 
 function App() {
   const { user } = useContext(AuthContext);
-  return (
+  console.log(user);
+  return user ? (
     <BrowserRouter>
-      {user?.id ? (
-        <Routes>
-          <Route exact path="/preonboarding" element={<PreOnboarding />} />
-          <Route path="*" element={<Navigate to="/preonboarding" />} />
-          <Route exact path="/admin" element={<Admin />} />
-        </Routes>
+      {user.id ? (
+        <>
+          <Header />
+          <Routes>
+            <Route path="/preonboarding" element={<PreOnboarding />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="*" element={<Navigate to="/preonboarding" />} />
+          </Routes>
+          <Footer />
+        </>
       ) : (
         <Routes>
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/password" element={<SetPass />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/password" element={<SetPass />} />
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       )}
     </BrowserRouter>
+  ) : (
+    <Spinner />
   );
 }
 
