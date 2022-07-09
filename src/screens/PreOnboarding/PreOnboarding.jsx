@@ -137,10 +137,17 @@ const PreOnboarding = () => {
   }, []);
 
   return (
-    <Flex bg="blue.50" align="center" justify="center" h="100vh" w="100%">
+    <Flex
+      bg="blue.50"
+      align="center"
+      justify="center"
+      h="100vh"
+      maxHeight="-webkit-fill-available"
+      w="100%"
+    >
       <VStack spacing={8} align="center" w="100%">
         <form>
-          <Box bg="white" m={6} p={6} rounded="md" w="100%" boxShadow="lg">
+          <Box bg="white" my={6} p={6} rounded="md" w="100%" boxShadow="lg">
             <Text fontSize="3xl" fontWeight="bold">
               Pre-Onboarding Details
             </Text>
@@ -149,13 +156,15 @@ const PreOnboarding = () => {
             </Text>
           </Box>
           {loading ? (
-            <Spinner
-              thickness="4px"
-              speed="0.65s"
-              emptyColor="gray.200"
-              color="blue.500"
-              size="xl"
-            />
+            <Flex justifyContent="center">
+              <Spinner
+                thickness="4px"
+                speed="0.65s"
+                emptyColor="gray.200"
+                color="blue.500"
+                size="xl"
+              />
+            </Flex>
           ) : error ? (
             <Alert status="error">
               <AlertIcon />
@@ -166,7 +175,7 @@ const PreOnboarding = () => {
               {data?.map((doc) => (
                 <Box
                   bg="white"
-                  m={6}
+                  my={6}
                   p={6}
                   rounded="md"
                   w="100%"
