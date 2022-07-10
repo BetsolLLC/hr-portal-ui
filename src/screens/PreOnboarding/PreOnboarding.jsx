@@ -4,16 +4,13 @@ import {
   Button,
   Flex,
   FormControl,
-  FormHelperText,
   FormLabel,
-  Input,
   VStack,
   Text,
   Spinner,
   useToast,
   Alert,
   AlertIcon,
-  AlertTitle,
   AlertDescription,
 } from "@chakra-ui/react";
 import "./PreOnboarding.css";
@@ -75,7 +72,7 @@ const PreOnboarding = () => {
       );
 
       var fileDownload = require("js-file-download");
-      console.log(data);
+
       fileDownload(data, docname + ".zip");
     } catch (error) {
       toast({

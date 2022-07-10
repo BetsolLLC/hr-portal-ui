@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Header from "./components/header";
-import Footer from "./components/footer";
+
 import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 
 import Admin from "./screens/Admin/Admin";
@@ -19,11 +19,19 @@ function App() {
       {user.id ? (
         <>
           <Header />
-          <Routes>
-            <Route path="/preonboarding" element={<PreOnboarding />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="*" element={<Navigate to="/preonboarding" />} />
-          </Routes>
+          {user.is_admin ? (
+            <Routes>
+              <Route path="/admin" element={<Admin />} />
+              <Route path="*" element={<Navigate to="/admin" />} />
+            </Routes>
+          ) : (
+            <Routes>
+              <Route path="/preonboarding" element={<PreOnboarding />} />
+
+              <Route path="*" element={<Navigate to="/preonboarding" />} />
+            </Routes>
+          )}
+
           {/* <Footer /> */}
         </>
       ) : (
