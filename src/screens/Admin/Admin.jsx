@@ -1,35 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
 
 import {
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-  Input,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
   Flex,
-  Stack,
   Spacer,
-  VStack,
   Box,
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
-  TableCaption,
   TableContainer,
   Text,
   Button,
-  ButtonGroup,
   useDisclosure,
   Spinner,
   Alert,
@@ -39,7 +22,7 @@ import {
 } from "@chakra-ui/react";
 import { AddUserModal } from "./components/AddUserModal";
 import axios from "../../api/axios";
-import Header from "../../components/header";
+
 import AuthContext from "../../context/AuthProvider";
 
 const Admin = () => {
@@ -84,7 +67,7 @@ const Admin = () => {
     fetchData();
   }, []);
 
-  const handleDownload = async (id, docname) => {
+  const handleDownload = async (id, docname, userId, userName) => {
     try {
       const config = {
         responseType: "arraybuffer",
@@ -97,14 +80,13 @@ const Admin = () => {
         `/api/files/get${id == null ? "?bulk=true" : ""}`,
         {
           documentIds: [id],
-          userId: user.id,
+          userId: userId,
         },
         config
       );
 
       var fileDownload = require("js-file-download");
-      console.log(data);
-      fileDownload(data, docname ? docname : user.name + ".zip");
+      fileDownload(data, (docname ? docname : userName) + ".zip");
     } catch (error) {
       toast({
         title: "Error",
@@ -141,7 +123,7 @@ const Admin = () => {
 
         <AddUserModal isOpen={isOpen} onClose={onClose} />
         {loading ? (
-          <Flex justifyContent={center}>
+          <Flex justifyContent={"center"}>
             <Spinner
               thickness="4px"
               speed="0.65s"
@@ -184,7 +166,9 @@ const Admin = () => {
                               onClick={() =>
                                 handleDownload(
                                   document.doc_id,
-                                  document.docname
+                                  document.docname,
+                                  user.id,
+                                  user.Username
                                 )
                               }
                               ml={2}
@@ -198,7 +182,9 @@ const Admin = () => {
                           <Button
                             colorScheme="blue"
                             variant="link"
-                            onClick={() => handleDownload(null, null)}
+                            onClick={() =>
+                              handleDownload(null, null, user.id, user.Username)
+                            }
                             ml={2}
                           >
                             Download All
