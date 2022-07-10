@@ -139,7 +139,7 @@ export const AddUserModal = ({ isOpen, onClose }) => {
           </ModalBody>
 
           <ModalFooter>
-            <Button isLoading={loading} colorScheme="teal" mr={3} type="submit">
+            <Button isLoading={loading} colorScheme="blue" mr={3} type="submit">
               Submit
             </Button>
           </ModalFooter>

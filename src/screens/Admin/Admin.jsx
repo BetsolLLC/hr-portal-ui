@@ -52,7 +52,7 @@ const Admin = () => {
 
   useEffect(() => {
     setLoading(true);
-    //  add api in the url
+
     const fetchData = async () => {
       setLoading(true);
       try {
@@ -64,10 +64,9 @@ const Admin = () => {
         };
         const {
           data: { success, error, data },
-        } = await axios.get("/api/auth/getUserDetails", config); //api goes here
+        } = await axios.get("/api/auth/getUserDetails", config);
         if (success) {
           setData(data);
-          console.log(data);
         } else {
           setError(error);
         }
@@ -142,13 +141,15 @@ const Admin = () => {
 
         <AddUserModal isOpen={isOpen} onClose={onClose} />
         {loading ? (
-          <Spinner
-            thickness="4px"
-            speed="0.65s"
-            emptyColor="gray.200"
-            color="blue.500"
-            size="xl"
-          />
+          <Flex justifyContent={center}>
+            <Spinner
+              thickness="4px"
+              speed="0.65s"
+              emptyColor="gray.200"
+              color="blue.500"
+              size="xl"
+            />
+          </Flex>
         ) : error ? (
           <Alert status="error">
             <AlertIcon />
