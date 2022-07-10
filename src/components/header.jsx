@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Box, Image, Flex, Spacer, HStack, Button } from "@chakra-ui/react";
+import AuthContext from "../context/AuthProvider";
 
 const Header = () => {
+  const { setUserInfo } = useContext(AuthContext);
+  const logout = () => {
+    setUserInfo({});
+    localStorage.removeItem("userInfo");
+  };
   return (
     <Flex bg="white" py={6} px={32} alignItems="center">
       <Box>
@@ -12,21 +18,21 @@ const Header = () => {
         <HStack>
           <Box>
             {" "}
-            <Button colorScheme="teal" variant="ghost">
+            <Button colorScheme="blue" variant="ghost" onClick={logout}>
               Logout
             </Button>
           </Box>{" "}
           <Box>
             {" "}
-            <Button colorScheme="teal" variant="ghost">
+            {/* <Button colorScheme="teal" variant="ghost">
               Item2
-            </Button>
+            </Button> */}
           </Box>
           <Box>
             {" "}
-            <Button colorScheme="teal" variant="ghost">
+            {/* <Button colorScheme="teal" variant="ghost">
               Item3
-            </Button>
+            </Button> */}
           </Box>{" "}
         </HStack>
       </Box>

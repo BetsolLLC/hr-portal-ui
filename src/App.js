@@ -14,7 +14,6 @@ import { Spinner } from "@chakra-ui/react";
 
 function App() {
   const { user } = useContext(AuthContext);
-  console.log(user);
   return user ? (
     <BrowserRouter>
       {user.id ? (
@@ -25,7 +24,7 @@ function App() {
             <Route path="/admin" element={<Admin />} />
             <Route path="*" element={<Navigate to="/preonboarding" />} />
           </Routes>
-          <Footer />
+          {/* <Footer /> */}
         </>
       ) : (
         <Routes>
