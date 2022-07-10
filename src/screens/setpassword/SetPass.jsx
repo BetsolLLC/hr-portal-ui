@@ -1,11 +1,10 @@
-import { useFormik, Field } from "formik";
+import { useFormik } from "formik";
 import {
   Box,
   Button,
   Flex,
   FormControl,
   FormLabel,
-  FormErrorMessage,
   Input,
   VStack,
   Text,
@@ -13,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import axios from "../../api/axios";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 export default function SetPass() {
   const [loading, setLoading] = useState(false);
@@ -139,6 +138,12 @@ export default function SetPass() {
             >
               Reset Password
             </Button>
+
+            <Link to="/login">
+              <Button colorScheme="blue" variant="link">
+                Back to Login
+              </Button>
+            </Link>
           </VStack>
         </form>
       </Box>
