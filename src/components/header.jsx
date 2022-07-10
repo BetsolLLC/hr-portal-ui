@@ -17,23 +17,20 @@ const Header = () => {
       <Box>
         <HStack>
           <Box>
-            {" "}
             <Button colorScheme="blue" variant="ghost" onClick={logout}>
               Logout
             </Button>
-          </Box>{" "}
+          </Box>
           <Box>
-            {" "}
             {/* <Button colorScheme="teal" variant="ghost">
               Item2
             </Button> */}
           </Box>
           <Box>
-            {" "}
             {/* <Button colorScheme="teal" variant="ghost">
               Item3
             </Button> */}
-          </Box>{" "}
+          </Box>
         </HStack>
       </Box>
     </Flex>
