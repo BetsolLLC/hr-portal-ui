@@ -26,6 +26,22 @@ export const AddUserModal = ({ isOpen, onClose }) => {
 
   const handleEmail = async (name, email, batch, number) => {
     setLoading(true);
+    let error;
+
+    if (number.match(/^(?=.*[0-9])[0-9]{10,10}$/) == null) {
+      error = "Invalid Phone Number.";
+    }
+    console.log(error);
+    if (error) {
+      setLoading(false);
+      toast({
+        title: "Error",
+        description: error,
+        status: "error",
+      });
+      return;
+    }
+
     try {
       const config = {
         headers: {
@@ -129,7 +145,7 @@ export const AddUserModal = ({ isOpen, onClose }) => {
                 <Input
                   id="number"
                   name="number"
-                  type="number"
+                  type="tel"
                   variant="filled"
                   onChange={formik.handleChange}
                   value={formik.values.number}

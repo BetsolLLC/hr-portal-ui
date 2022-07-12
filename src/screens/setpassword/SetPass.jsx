@@ -106,7 +106,7 @@ export default function SetPass() {
         <form onSubmit={formik.handleSubmit}>
           <VStack spacing={8} align="flex-start">
             <Text align={"center"} fontWeight="semibold" fontSize="2xl">
-              Reset Password
+              Set Password
             </Text>
             <FormControl>
               <FormLabel htmlFor="password">New Password</FormLabel>

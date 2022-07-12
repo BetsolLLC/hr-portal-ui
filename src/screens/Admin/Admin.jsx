@@ -179,16 +179,25 @@ const Admin = () => {
                         </Td>
                         <Td isNumeric>{user.no_of_docs}</Td>
                         <Td>
-                          <Button
-                            colorScheme="blue"
-                            variant="link"
-                            onClick={() =>
-                              handleDownload(null, null, user.id, user.Username)
-                            }
-                            ml={2}
-                          >
-                            Download All
-                          </Button>
+                          {user.no_of_docs ? (
+                            <Button
+                              colorScheme="blue"
+                              variant="link"
+                              onClick={() =>
+                                handleDownload(
+                                  null,
+                                  null,
+                                  user.id,
+                                  user.Username
+                                )
+                              }
+                              ml={2}
+                            >
+                              Download All
+                            </Button>
+                          ) : (
+                            <></>
+                          )}
                         </Td>
                       </Tr>
                     ))}
