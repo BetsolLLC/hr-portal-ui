@@ -156,7 +156,7 @@ export default function SetPass() {
                   <ListItem>at least 8 characters.</ListItem>
                   <ListItem>a maximum of 20 characters.</ListItem>
                   <ListItem>
-                    contain atleast 1 uppercase, 1 lowercase, 1 digit and 1
+                    atleast 1 uppercase, 1 lowercase, 1 digit and 1
                     special character.
                   </ListItem>
                   <ListItem>no spaces.</ListItem>
