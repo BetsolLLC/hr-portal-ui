@@ -9,6 +9,8 @@ import {
   VStack,
   Text,
   useToast,
+  UnorderedList,
+  ListItem,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import axios from "../../api/axios";
@@ -102,7 +104,14 @@ export default function SetPass() {
 
   return (
     <Flex bgColor="blue.50" align="center" justify="center" h="100vh">
-      <Box bg="white" p={6} rounded="md" w={64} boxShadow="lg">
+      <Box
+        bg="white"
+        p={6}
+        rounded="md"
+        w={"80%"}
+        maxW={"600px"}
+        boxShadow="lg"
+      >
         <form onSubmit={formik.handleSubmit}>
           <VStack spacing={8} align="flex-start">
             <Text align={"center"} fontWeight="semibold" fontSize="2xl">
@@ -138,6 +147,22 @@ export default function SetPass() {
             >
               Reset Password
             </Button>
+            <Box mt={2}>
+              <Text fontSize="lg" fontWeight={600}>
+                Password must contain:
+              </Text>
+              <Box ml={2}>
+                <UnorderedList>
+                  <ListItem>at least 8 characters.</ListItem>
+                  <ListItem>a maximum of 20 characters.</ListItem>
+                  <ListItem>
+                    contain atleast 1 uppercase, 1 lowercase, 1 digit and 1
+                    special character.
+                  </ListItem>
+                  <ListItem>no spaces.</ListItem>
+                </UnorderedList>
+              </Box>
+            </Box>
 
             <Link to="/login">
               <Button colorScheme="blue" variant="link">
