@@ -11,6 +11,7 @@ import PreOnboarding from "./screens/PreOnboarding/PreOnboarding.jsx";
 
 import SetPass from "./screens/setpassword/SetPass.jsx";
 import { Spinner } from "@chakra-ui/react";
+//comment
 
 function App() {
   const { user } = useContext(AuthContext);
