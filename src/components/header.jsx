@@ -1,5 +1,15 @@
 import React, { useContext } from "react";
-import { Box, Image, Flex, Spacer, HStack, Button } from "@chakra-ui/react";
+import {
+  Box,
+  Image,
+  Flex,
+  Spacer,
+  HStack,
+  Button,
+  Text,
+} from "@chakra-ui/react";
+import { Link } from "@chakra-ui/react";
+import { Link as RLink } from "react-router-dom";
 import AuthContext from "../context/AuthProvider";
 
 const Header = () => {
@@ -17,19 +27,25 @@ const Header = () => {
       <Box>
         <HStack>
           <Box>
+            <Link
+              to="/preonboarding"
+              as={RLink}
+              color="blue.600"
+              marginRight={4}
+              fontWeight={500}
+            >
+              Preonboarding
+            </Link>
+          </Box>
+          <Box>
+            <Link to="/onboarding" as={RLink} color="blue.600" fontWeight={500}>
+              Onboarding
+            </Link>
+          </Box>
+          <Box>
             <Button colorScheme="blue" variant="ghost" onClick={logout}>
               Logout
             </Button>
-          </Box>
-          <Box>
-            {/* <Button colorScheme="teal" variant="ghost">
-              Item2
-            </Button> */}
-          </Box>
-          <Box>
-            {/* <Button colorScheme="teal" variant="ghost">
-              Item3
-            </Button> */}
           </Box>
         </HStack>
       </Box>

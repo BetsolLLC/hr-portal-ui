@@ -8,9 +8,11 @@ import Admin from "./screens/Admin/Admin";
 import AuthContext from "./context/AuthProvider.js";
 import Login from "./screens/Login/Login.jsx";
 import PreOnboarding from "./screens/PreOnboarding/PreOnboarding.jsx";
+import onboarding from "./screens/Onboarding/Onboarding.js";
 
 import SetPass from "./screens/setpassword/SetPass.jsx";
 import { Spinner } from "@chakra-ui/react";
+import Onboarding from "./screens/Onboarding/Onboarding.js";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -27,6 +29,7 @@ function App() {
           ) : (
             <Routes>
               <Route path="/preonboarding" element={<PreOnboarding />} />
+              <Route path="/onboarding" element={<Onboarding />} />
 
               <Route path="*" element={<Navigate to="/preonboarding" />} />
             </Routes>
