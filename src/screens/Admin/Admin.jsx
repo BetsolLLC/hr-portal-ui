@@ -22,14 +22,19 @@ import {
 } from "@chakra-ui/react";
 import { AddUserModal } from "./components/AddUserModal";
 import axios from "../../api/axios";
-
 import AuthContext from "../../context/AuthProvider";
+import { AddMultipleUserModal } from "./components/AddMultipleUserModal";
 
 const Admin = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: isUserOpen,
+    onOpen: onUserOpen,
+    onClose: onUserClose,
+  } = useDisclosure();
   const { user } = useContext(AuthContext);
   const toast = useToast();
 
@@ -115,13 +120,15 @@ const Admin = () => {
             <Button colorScheme="blue" variant="solid" onClick={onOpen}>
               Add user
             </Button>
-            {/* <Button colorScheme="blue" onClick={onOpen}>
-            Add multiple users
-          </Button> */}
+            &nbsp;
+            <Button colorScheme="blue" onClick={onUserOpen}>
+              Add multiple users
+            </Button>
           </Box>
         </Flex>
 
         <AddUserModal isOpen={isOpen} onClose={onClose} />
+        <AddMultipleUserModal isOpen={isUserOpen} onClose={onUserClose} />
         {loading ? (
           <Flex justifyContent={"center"}>
             <Spinner
